@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head> 
+<meta charset="utf-8">
+    <title>Pick up</title>
+    
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0" />
+    
+    <link rel="stylesheet" type="text/css" href="appframework/af.ui.css" />
+    <link rel="stylesheet" type="text/css" href="appframework/icons.css" />
+    <link rel="stylesheet" type="text/css" href="appassets/css/pickup.css" />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,300,700' rel='stylesheet' type='text/css'>
+    
+    <script type="text/javascript" charset="utf-8" src="appframework/appframework.ui.min.js"></script>
+    <script>
+        $.ui.autoLaunch = false;
+        $.ui.animateHeaders = false;
+        
+        /* Required if building app using Intel XDK */        
+        function onDeviceReady(){ 
+            $.ui.launch();
+            intel.xdk.device.hideSplashScreen();
+        }
+        
+        $(document).ready(function(){
+            document.addEventListener("intel.xdk.device.ready", onDeviceReady, false);
+            $.ui.launch();
+            $.ui.loadContent("pickuppage",false,false,"pop");
+        });        
+    </script>    
+</head>
+<body> 
+<div id="afui">
+    <div id="content" style="">
+      <div class="panel" title="Pickup" id="pickuppage" data-footer="none" selected="true">
+          <header>
+              <h1>Pick up</h1>
+              <a href="#" class="button icon home"></a>
+              <a href="#settingspage" data-transition="flip" class="button icon settings" style="float:right"></a>
+          </header>
+          <ul class="list inset time-remaining">
+              <li><div class="icon clock time">0 hrs : 54 mins</div></li>
+          </ul>
+          <ul class="list inset">
+              <li><a href="#mappage" data-transition="flip" class="icon location big">Valhallavägen 232, 1</a></li>
+              <li><a href="#contactpage" data-transition="flip" class="icon user big">TechButiken</a></li>
+              <li><div class="icon paper big">MFL720</div></li>
+          </ul>
+            <a class="btn btn-success btn-lg btn-block icon check">I have made the Pick up</a>                 
+            <a class="btn btn-danger btn-lg btn-block icon message">Report a problem</a>
+      </div>
+    
+        <div class="panel" title="Maps" id="mappage"  data-footer="none" selected="true">
+            <header>
+                <h1>Pick up</h1>
+                <a onclick="$.ui.goBack();" data-transition="flip" class="button icon left"></a>
+                <a href="#" class="button icon target" onclick="" style="float:right"></a>
+            </header>
+            
+            <div id="map">
+              <img src="appassets/img/map.png" height="747" width="1226" alt="Map">
+            </div>
+        </div>
+        
+        <div class="panel" title="Contact" id="contactpage" data-footer="none">
+            <header>
+                <h1>Pick up</h1>
+                  <a onclick="$.ui.goBack();" data-transition="flip" class="button icon left"></a>
+                  <a href="#mappage" data-transition="flip" class="button icon location" style="float:right"></a>
+            </header>
+        <div class="grid">
+              <div class="centered contact-info">
+                  <img class="img-circle" src="appassets/img/user-contact.png" height="180" width="180" alt="Map">
+                    <p>Mr. John Doe</p>
+                    <p>TechButiken<br />
+                    Valhallavägen 232, 1<br />
+                    Stockholm 50000</p>
+              </div>
+            </div>
+            <a href="tel:+461234567" class="btn btn-success btn-lg btn-block icon phone call">Call Contact</a>          
+        </div>
+        
+        <div class="panel" title="Settings" id="settingspage"  data-footer="none">
+            <header>
+                <h1>Map Settings</h1>
+                  <a onclick="$.ui.goBack();" data-transition="flip" class="button icon close" style="float:right"></a>
+            </header>
+            <p></p>
+            <ul class="list inset" id="settingsList">
+                <li>
+                    <label>Traffic</label>
+                    <input id="toggle1" type="checkbox" name="toggle1" value="0" class="toggle" onchange="">
+                    <label style="left:70%" for="toggle1" data-on="On" data-off="Off"><span></span></label>
+                </li>
+            </ul> 
+        </div>
+        
+    </div>
+</div>
+</body>
+</html>    
