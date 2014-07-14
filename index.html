@@ -1,39 +1,41 @@
 <!DOCTYPE html>
-<html lang="en"> 
-<head> 
+<html lang="en">
+<head>
 <meta charset="utf-8">
+<!-- Favicon -->
+	<link rel="shortcut icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAtJJREFUeNq0l3tozlEYx3/vu71yK6tZLkso/tlEm0yIMiS10oiJvzSXIiJJSnMpUa7xB7kkcou/hhKt/SHEKK34gyxDm8QQ5tLw+p56Xp1Oz/e85/1tnvrU+57rc85zOc8vkU6nIyOjRoyMLOkFVoM1oAi8BLvAeZCOuPQH68BKMAA8A9vBVXvQ89YX/37nk4XOgBrrfyk4C0aDbWSOWesCqLLaxoMrYD04qE1KKm0znc1t2QLKSd9iZ3NbNoHCUAXmeq44D5SRvnLPvMGgIlSBZBRP8rL0J0IVqPcs8hs0k74HnnlvWb+mwE1wiSy0EzwkfcYBb5C+A+Ad81zmUE/BItAHfAGHwRHPKbvAPLADVEsod4C9EkG6XUgeyEhKFvoh1x8qmXnfwR+3MyQP2KfqiuGQwfPienyPSX4PrjUcTAPjxASt4JZEza//qYCJ/43ifCml30TGCvCqOyZIEWVNcjkuD1WKzJ0N7oKSkBs4ASaI12ekt3FcsBx8cMbvAUsDDlAMLoOJ4CtTYCiYDwqUBeqUzSeDtTmYqkSe5g3MBNPJ5odIel7lufbIk+CKmAKVJJ6PKu1DxLaamOx3T/K/9iouZAqUKhOeSEp2xaTcgUr7RzAHTAJTQJsyppopUKwMvq2lUnFUTU5br14L2K2MGcYU6KsMbiEbjfG8iLY8UsYU5JIHOpW2MlIVmVhvctq+ZQt9WwHtqgtJyaYp3hwn09oLtZHTulJJ1moiZbpWVakKaCeYISGXkSVgqjLuM2gMLFQ7mQLXiAmOSUVrqqP95PT3yWOzQGn7xGzUANolJdtS5an37XDVQrUiW2QlnSRyPcZz/B6cUto3k1K83ueldXLaQTkocBK8dtr6gX1OIkpIpD32KdAu33Hn2IeEI8ZsW4mj3YlbE5psVkuSkC2N8rr97E45xTKhselYcFE+zTvER95Iel0GZrGPjVzkrwADAC4zkMFYEYwyAAAAAElFTkSuQmCC">
     <title>Pick up</title>
-    
+
     <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0" />
-    
+
     <link rel="stylesheet" type="text/css" href="appframework/af.ui.css" />
     <link rel="stylesheet" type="text/css" href="appframework/icons.css" />
     <link rel="stylesheet" type="text/css" href="appassets/css/pickup.css" />
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,300,700' rel='stylesheet' type='text/css'>
-    
+
     <script type="text/javascript" charset="utf-8" src="appframework/appframework.ui.min.js"></script>
     <script>
         $.ui.autoLaunch = false;
         $.ui.animateHeaders = false;
-        
-        /* Required if building app using Intel XDK */        
-        function onDeviceReady(){ 
+
+        /* Required if building app using Intel XDK */
+        function onDeviceReady(){
             $.ui.launch();
             intel.xdk.device.hideSplashScreen();
         }
-        
+
         $(document).ready(function(){
             document.addEventListener("intel.xdk.device.ready", onDeviceReady, false);
             $.ui.launch();
             $.ui.loadContent("pickuppage",false,false,"pop");
-        });        
-    </script>    
+        });
+    </script>
 </head>
-<body> 
+<body>
 <div id="afui">
-    <div id="content" style="">
+    <div id="content" style="background-color:rgba(244,244,244,1);color:#2D3F55;">
       <div class="panel" title="Pickup" id="pickuppage" data-footer="none" selected="true">
-          <header>
+          <header style="background-color:#33B5E5;">
               <h1>Pick up</h1>
               <a href="#" class="button icon home"></a>
               <a href="#settingspage" data-transition="flip" class="button icon settings" style="float:right"></a>
@@ -41,31 +43,31 @@
           <ul class="list inset time-remaining">
               <li><div class="icon clock time">0 hrs : 54 mins</div></li>
           </ul>
-          <ul class="list inset">
+          <ul class="list inset" style="border-color:#ccc!important;">
               <li><a href="#mappage" data-transition="flip" class="icon location big">Valhallavägen 232, 1</a></li>
               <li><a href="#contactpage" data-transition="flip" class="icon user big">TechButiken</a></li>
               <li><div class="icon paper big">MFL720</div></li>
           </ul>
-            <a class="btn btn-success btn-lg btn-block icon check">I have made the Pick up</a>                 
+            <a class="btn btn-success btn-lg btn-block icon check">I have made the Pick up</a>
             <a class="btn btn-danger btn-lg btn-block icon message">Report a problem</a>
       </div>
-    
+
         <div class="panel" title="Maps" id="mappage"  data-footer="none" selected="true">
-            <header>
+            <header style="background-color:#33B5E5;">
                 <h1>Pick up</h1>
-                <a onclick="$.ui.goBack();" data-transition="flip" class="button icon left"></a>
+                <a id="backButton" onclick="$.ui.goBack();" data-transition="flip" class="button backButton">Back</a>
                 <a href="#" class="button icon target" onclick="" style="float:right"></a>
             </header>
-            
+
             <div id="map">
               <img src="appassets/img/map.png" height="747" width="1226" alt="Map">
             </div>
         </div>
-        
+
         <div class="panel" title="Contact" id="contactpage" data-footer="none">
-            <header>
+            <header style="background-color:#33B5E5;">
                 <h1>Pick up</h1>
-                  <a onclick="$.ui.goBack();" data-transition="flip" class="button icon left"></a>
+                  <a id="backButton" onclick="$.ui.goBack();" data-transition="flip" class="button backButton">Back</a>
                   <a href="#mappage" data-transition="flip" class="button icon location" style="float:right"></a>
             </header>
         <div class="grid">
@@ -77,25 +79,34 @@
                     Stockholm 50000</p>
               </div>
             </div>
-            <a href="tel:+461234567" class="btn btn-success btn-lg btn-block icon phone call">Call Contact</a>          
+            <a href="tel:+461234567" class="btn btn-success btn-lg btn-block icon phone call">Call Contact</a>
         </div>
-        
+
         <div class="panel" title="Settings" id="settingspage"  data-footer="none">
-            <header>
+            <header style="background-color:#33B5E5;">
                 <h1>Map Settings</h1>
                   <a onclick="$.ui.goBack();" data-transition="flip" class="button icon close" style="float:right"></a>
             </header>
             <p></p>
-            <ul class="list inset" id="settingsList">
+            <ul class="list inset" id="settingsList" style="border-color:#ccc!important;">
                 <li>
                     <label>Traffic</label>
                     <input id="toggle1" type="checkbox" name="toggle1" value="0" class="toggle" onchange="">
                     <label style="left:70%" for="toggle1" data-on="On" data-off="Off"><span></span></label>
                 </li>
-            </ul> 
+            </ul>
         </div>
-        
+
     </div>
 </div>
+<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+<script>
+    (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+    function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+    e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+    e.src='//www.google-analytics.com/analytics.js';
+    r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+    ga('create','UA-40988200-1');ga('send','pageview');
+</script>
 </body>
-</html>    
+</html>
